@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: misalign
+Version: 0.0.1
+Summary: Misalignment robust training
+Home-page: https://github.com/KHRyu8985/misalign-benchmark
+Author: Kanghyun Ryu
+Author-email: khryu@kist.re.kr

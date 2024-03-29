@@ -1,0 +1,44 @@
+_target_: misalign.models.proposed_module_A_to_B.ProposedModule_A_to_B
+
+name: proposed_A_to_B
+
+optimizer:
+  _target_: torch.optim.Adam
+  _partial_: true
+  lr: 0.0001
+  betas: [0.5, 0.999]
+  weight_decay: 0.0001
+
+netG_A:
+  _target_: misalign.models.components.networks.define_G
+  input_nc: 1
+  output_nc: 1
+  ngf: 64
+  norm: 'instance'
+  use_dropout: False
+  init_type: 'normal'
+
+netD_A:
+  _target_: misalign.models.components.networks.define_D
+  input_nc: 1
+  ndf: 64
+  norm: 'instance'
+  n_layers_D: 3
+  init_type: 'normal'
+
+params: # Other params
+  pool_size: 0
+  lambda_l1: 20 # L1 loss
+  lambda_style: 20 # Style loss
+  lambda_smooth: 10 # L1-Smooth loss
+  lambda_reg_consistency: 10 # Reg 를 끄는 방법 -> 0
+  reverse: ${data.reverse} # A->B if False, B->A if True
+  flag_GAN: True # Else : no GAN
+  flag_register: False
+  flag_ctx: True
+  flag_feature_descriptor: VGG
+  flag_meta_learning: True
+  flag_meta_use_spatial: True
+  meta_type: LRE # 고정
+  flag_use_mask: False
+  dir_meta_learning: ${paths.root_dir}/data/MR_3T2_7T1_s/val/prepared_data_0.0_0.0_0.0_0.0_0.0.h5  # TODO

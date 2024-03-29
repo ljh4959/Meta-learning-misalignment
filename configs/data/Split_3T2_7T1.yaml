@@ -1,0 +1,15 @@
+_target_: misalign.data.MR_3T1_7T1_datamodule.MR_3T1_7T1_DataModule
+name: Split_3T2_7T1
+data_dir: ${paths.root_dir}/data/MR_3T2_7T1_s
+misalign_x: 0
+misalign_y: 0
+degree: 0
+motion_prob: 0
+deform_prob: 0
+reverse: False # New
+flip_prob: 0.0
+rot_prob: 0.0
+rand_crop: True #False
+batch_size: 12 #1
+num_workers: 3
+pin_memory: False

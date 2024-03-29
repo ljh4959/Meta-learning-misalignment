@@ -1,0 +1,16 @@
+# https://lightning.ai/docs/pytorch/latest/api/lightning.pytorch.callbacks.RichProgressBar.html
+
+ImageLoggingCallback:
+  _target_: misalign.callbacks.image_callback.ImageLoggingCallback
+  # val_batch_idx: [50,100,150,200]
+  # tst_batch_idx: [50,100,150,200,250]
+  val_batch_idx: [30,60,90,120]
+  tst_batch_idx: [30,60,90,120,150]
+  center_crop: 256
+  every_epoch: 5 # log every 5 epochs
+  log_test: True # log test images
+
+ImageSavingCallback:
+  _target_: misalign.callbacks.image_callback.ImageSavingCallback
+  center_crop: 256
+  subject_number_length: 3
